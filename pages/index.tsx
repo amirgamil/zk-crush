@@ -63,7 +63,7 @@ const Home: NextPage = () => {
                 </div>
                 <div className="py-4"></div>
                 <div className={styles.containerPadding}>
-                    <p>Name of your crush (first and last)</p>
+                    <p>Name of your crush (first and last capitalized)</p>
                     <div className="py-2"></div>
                     <input
                         placeholder="Alice Jones"
