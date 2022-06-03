@@ -21,3 +21,5 @@ When people go to this URL, they can enter their name, to generate the hash of t
 
 <img width="1507" alt="notmatch" src="https://user-images.githubusercontent.com/7995105/171797129-f7079d7c-3392-4243-8202-ea1be508e546.png">
 <img width="1512" alt="match" src="https://user-images.githubusercontent.com/7995105/171797130-7add2029-8217-44ce-bcaf-f3dec21cd7d2.png">
+
+Note this is mostly a joke and a toy, do not use this if you stand to seriously lose something!
