@@ -1,34 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# zk-Crush
 
-## Getting Started
+zk-Crush is a way to tell your crush you like them with [zero-knowledge](https://en.wikipedia.org/wiki/Zero_knowledge#:~:text=Zero%20knowledge%20may%20mean%3A,the%20veracity%20of%20the%20statement).
 
-First, run the development server:
+### How it works
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+The idea is that we hash the name of your crush, then people can hash their name and check if their hash matches the hash of the crush you've provided. Therefore it's zero-knowledge because we don't store your name, we only know the hash, so finding a hash that matches corresponds to knowing the pre-image to the hash. Also note that this is entirely client-side, we store nothing on a server.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### How to use it
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Very simple, you enter your name and the name of a crush.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+It will generate a URL that you will be able to publicly share.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+When people go to this URL, they can enter their name, to generate the hash of their name and see if it matches the hash of your crush. If it doesn't, no harm done, if it does, they now know!
