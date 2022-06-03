@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import * as React from "react";
 import sha256 from "crypto-js/sha256";
+import toast, { Toaster } from "react-hot-toast";
 
 const Home: NextPage = () => {
     const [name, setName] = React.useState<string>("");
@@ -12,11 +13,17 @@ const Home: NextPage = () => {
 
     const generateUrl = React.useCallback(() => {
         const hash = sha256(crushName).toString();
-        setSavedURL(
+        const savedURL =
             (process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "https://areyoumycrush.xyz/") +
-                `crush?hash=${hash}&name=${name}`
-        );
-    }, [crushName]);
+            `crush?hash=${encodeURIComponent(hash)}&name=${encodeURIComponent(name)}`;
+        setSavedURL(savedURL);
+
+        navigator.clipboard.writeText(savedURL);
+
+        toast("URL copied to clipboard", {
+            position: "top-center",
+        });
+    }, [crushName, name]);
 
     return (
         <div className={styles.container}>
@@ -28,20 +35,33 @@ const Home: NextPage = () => {
 
             <main className={styles.main}>
                 <h1 className={styles.title}>zk-Crush ❤️ </h1>
-
-                <h3 className="font-bold">How this works</h3>
                 <p>
-                    You enter the name of your crush, we will hash it with the sha256 function and generate a unique
-                    link that you can share publicly. People can enter their names into this unique link, if the
-                    generated hash matches, they'll be notified they are your crush, if not, they will be told they're
-                    not and no other info is revealed. Note we do not store any info, this app is entirely client side.
+                    <i>
+                        Tell your crush you like them with{" "}
+                        <a href="https://en.wikipedia.org/wiki/Zero_knowledge#:~:text=Zero%20knowledge%20may%20mean%3A,the%20veracity%20of%20the%20statement">
+                            zero-knowledge
+                        </a>
+                    </i>
                 </p>
 
+                <div className="py-4"></div>
+
+                <h3 className="font-bold">How this works</h3>
+                <p className="text-center">
+                    You enter the name of your crush, we will hash it with the sha256 function and generate a unique
+                    link that you can share publicly. People can enter their names into this unique link to{" "}
+                    <strong>generate the hash of their name.</strong> If the <strong>generated hash matches</strong>,
+                    they'll be <strong>notified you are their crush</strong>, if not, they will be told they're not and
+                    no other info is revealed. Note we do not store any info, this app is entirely client side.
+                </p>
+
+                <div className="py-4"></div>
                 <div className={styles.containerPadding}>
                     <p>Your name</p>
                     <div className="py-2"></div>
                     <input placeholder="Bob" value={name} onChange={(evt) => setName(evt.target.value)} />
                 </div>
+                <div className="py-4"></div>
                 <div className={styles.containerPadding}>
                     <p>Name of your crush (first and last)</p>
                     <div className="py-2"></div>
@@ -51,16 +71,20 @@ const Home: NextPage = () => {
                         onChange={(evt) => setCrushName(evt.target.value)}
                     />
                 </div>
+                <div className="py-6"></div>
                 <div className={styles.containerPadding}>
                     <button onClick={generateUrl}>Generate URL</button>
-                    <p>{savedURL}</p>
+                    <div className="py-2"></div>
+                    <p style={{ wordBreak: "break-all" }}>{savedURL}</p>
                 </div>
-            </main>
 
-            <footer className={styles.footer}>
-                Built my
-                <a href="https://twitter.com/amirbolous">Amir</a> and open source on Github
-            </footer>
+                <div className="py-4"></div>
+                <footer className={styles.footer}>
+                    Built by <a href="https://twitter.com/amirbolous">Amir</a> and{" "}
+                    <a href="https://github.com/amirgamil/zk-crush">open source</a> on Github
+                </footer>
+                <Toaster />
+            </main>
         </div>
     );
 };

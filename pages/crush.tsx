@@ -4,7 +4,8 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import * as React from "react";
 import sha256 from "crypto-js/sha256";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
+import { Toaster } from "react-hot-toast";
 
 const Home: NextPage = () => {
     const router = useRouter();
@@ -28,48 +29,61 @@ const Home: NextPage = () => {
             </Head>
 
             <main className={styles.main}>
-                <h1 className={styles.title}>zk-Crush</h1>
+                <h1 className={styles.title}>zk-Crush ❤️ </h1>
+
+                <p>
+                    <i>
+                        Tell your crush you like them with{" "}
+                        <a href="https://en.wikipedia.org/wiki/Zero_knowledge#:~:text=Zero%20knowledge%20may%20mean%3A,the%20veracity%20of%20the%20statement">
+                            zero-knowledge
+                        </a>
+                    </i>
+                </p>
+
+                <div className="py-4"></div>
 
                 <h3 className="font-bold">How this works</h3>
                 <p>
-                    Hello! You may be {name}&apos;s crush! Enter your name below to see if the sha256 hash of your name
-                    matches below!
+                    Hello! You <strong>may be {name}&apos;s crush!</strong> Enter your name below to see if the sha256
+                    hash of your name matches that of their crush! Note, make sure this provided URL was provided by{" "}
+                    {name} so that you can trust it.
                 </p>
-                <p>
-                    Hash of {name}&apos;s crush: {hash}
+                <div className="py-3"></div>
+
+                <h3 className="font-bold">Hash of {name}&apos;s crush:</h3>
+
+                <p className="text-center" style={{ wordBreak: "break-all" }}>
+                    {hash}
                 </p>
 
+                <div className="py-3"></div>
                 <div className={styles.containerPadding}>
-                    <p>Your name (first & last)</p>
+                    <p>Your name (first and last)</p>
                     <div className="py-2"></div>
                     <input
                         placeholder="Alice Jones"
                         value={crushName}
                         onChange={(evt) => setCrushName(evt.target.value)}
                     />
-                    <div className="py-2"></div>
+                    <div className="py-4"></div>
                     <button onClick={checkIfCrush}>Check match</button>
+                    <div className="py-4"></div>
                     {crushHash && (
-                        <p>
-                            Your hash is {crushHash}, it&apos;s a {isMatch ? "match!" : "not a match :("}
+                        <p className="text-center">
+                            Your hash is {crushHash},{" "}
+                            <span style={{ color: crushHash === hash ? "#0bc608" : "red" }}>
+                                it&apos;s a {isMatch ? "match!" : "not a match :("}
+                            </span>
                         </p>
                     )}
                 </div>
+                <div className="py-4"></div>
+                <footer className={styles.footer}>
+                    Built by <a href="https://twitter.com/amirbolous">Amir</a> and{" "}
+                    <a href="https://github.com/amirgamil/zk-crush">open source</a> on Github
+                </footer>
+                <Toaster />
             </main>
-
-            <footer className={styles.footer}>
-                Built my Amir
-                <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Powered by{" "}
-                    <span className={styles.logo}>
-                        <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-                    </span>
-                </a>
-            </footer>
         </div>
     );
 };
