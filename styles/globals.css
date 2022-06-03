@@ -1,16 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: "Space Mono", monospace;
+    background: black;
+    color: white;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: underline;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input {
+    background: transparent;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid white;
+    outline: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    background: white;
+    color: black;
+    padding: 0.5rem 1rem;
+}
+
+button:hover {
+    opacity: 0.4;
 }
