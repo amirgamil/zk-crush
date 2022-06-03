@@ -12,7 +12,7 @@ const Home: NextPage = () => {
     const [savedURL, setSavedURL] = React.useState<string>("");
 
     const generateUrl = React.useCallback(() => {
-        const hash = sha256(crushName.toLowerCase ()).toString();
+        const hash = sha256(crushName.toLowerCase ().trim ()).toString();
         const savedURL =
             (process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "https://zkcrush.xyz/") +
             `crush?hash=${encodeURIComponent(hash)}&name=${encodeURIComponent(name)}`;
