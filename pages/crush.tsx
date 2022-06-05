@@ -72,7 +72,7 @@ const Home: NextPage = () => {
                         <p className="text-center">
                             Your hash is {crushHash},{" "}
                             <span style={{ color: crushHash === hash ? "#0bc608" : "red" }}>
-                                it&apos;s a {isMatch ? "match!" : "not a match :("}
+                                it&apos;s {isMatch ? "a match!" : "not a match :("}
                             </span>
                         </p>
                     )}
