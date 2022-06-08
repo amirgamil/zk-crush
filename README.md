@@ -2,6 +2,9 @@
 
 zk-Crush is a way to tell your crush you like them with [zero-knowledge](https://en.wikipedia.org/wiki/Zero_knowledge#:~:text=Zero%20knowledge%20may%20mean%3A,the%20veracity%20of%20the%20statement).
 
+### Disclaimer
+Note this project was mostly meant as a joke, it's not trustless (you have to trust the link came from someone you trust) and is vulnerable to [rainbow attacks](https://www.beyondidentity.com/glossary/rainbow-table-attack) because hashes are unsalted since the app is entirely client-side. Be careful if you're using this seriously, use at your own risk!
+
 <img width="1511" alt="overview" src="https://user-images.githubusercontent.com/7995105/171797030-0985d474-2aeb-44dd-935e-ff5e1ce1ad1b.png">
 
 ### How it works
@@ -22,4 +25,3 @@ When people go to this URL, they can enter their name, to generate the hash of t
 <img width="1507" alt="notmatch" src="https://user-images.githubusercontent.com/7995105/171797129-f7079d7c-3392-4243-8202-ea1be508e546.png">
 <img width="1512" alt="match" src="https://user-images.githubusercontent.com/7995105/171797130-7add2029-8217-44ce-bcaf-f3dec21cd7d2.png">
 
-Note this is mostly a joke and a toy, do not use this if you stand to seriously lose something!
