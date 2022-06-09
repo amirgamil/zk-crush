@@ -15,7 +15,7 @@ const Home: NextPage = () => {
     const { hash, name } = router.query;
 
     const checkIfCrush = React.useCallback(() => {
-        const newCrushHash = sha256(crushName.toLowerCase ()).toString();
+        const newCrushHash = sha256(crushName.trim().toLowerCase ()).toString();
         setCrushHash(newCrushHash);
     }, [crushName]);
 
